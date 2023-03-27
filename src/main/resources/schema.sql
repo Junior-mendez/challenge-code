@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS alumno (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(50),
+  lastname VARCHAR(50),
+  state VARCHAR(50),
+  age INTEGER
+);
