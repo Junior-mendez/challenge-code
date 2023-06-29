@@ -1,8 +1,9 @@
 package com.example.challengecode.domain.model;
 
 import lombok.*;
+import org.springframework.data.annotation.Id;
 
-import javax.validation.constraints.Max;
+
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -13,7 +14,6 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 public class Student {
 
-    private Long id ;
     @Size(min = 3, message = "El nombre debe tener mínimo 3 caracteres")
     private String name;
     @Size(min = 3,message = "El apellido debe tener mínimo 3 caracteres")

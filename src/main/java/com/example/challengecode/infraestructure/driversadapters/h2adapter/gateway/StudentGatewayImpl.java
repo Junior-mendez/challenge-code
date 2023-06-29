@@ -1,7 +1,7 @@
 package com.example.challengecode.infraestructure.driversadapters.h2adapter.gateway;
 
 import com.example.challengecode.domain.model.Student;
-import com.example.challengecode.domain.model.gateway.StudentRepository;
+import com.example.challengecode.domain.model.gateway.StudentGateway;
 import com.example.challengecode.infraestructure.driversadapters.h2adapter.StudentDBRepository;
 import com.example.challengecode.infraestructure.driversadapters.h2adapter.mapper.StudentMapper;
 import com.example.challengecode.infraestructure.driversadapters.h2adapter.model.DBStudent;
@@ -12,7 +12,7 @@ import reactor.core.publisher.Mono;
 
 @Component
 @RequiredArgsConstructor
-public class StudentGatewayImpl implements StudentRepository {
+public class StudentGatewayImpl implements StudentGateway {
 
     private final StudentDBRepository studentDBRepository;
 
@@ -26,12 +26,18 @@ public class StudentGatewayImpl implements StudentRepository {
     }
 
     @Override
-    public Mono<Boolean> existsById(Long id) {
-        return studentDBRepository.existsById(id);
+    public Mono<Boolean> existsByNameAndLastname(String name, String lastName) {
+
+        return studentDBRepository.existsByNameAndLastname(name,lastName);
     }
 
     @Override
     public Flux<Student> getAllState(String state) {
         return studentDBRepository.findAllByState(state).map(studentMapper::dbStudentToStudent);
+    }
+
+    @Override
+    public Flux<Student> getAll() {
+        return studentDBRepository.findAll().map(studentMapper::dbStudentToStudent);
     }
 }

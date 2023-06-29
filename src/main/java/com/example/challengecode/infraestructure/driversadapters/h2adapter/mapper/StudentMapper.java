@@ -7,6 +7,6 @@ import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "Spring")
 public interface StudentMapper {
-    @Mapping(source = "id",target = "id")
+    @Mapping(source = "name",target = "name")
     Student dbStudentToStudent(DBStudent dbStudent);
 }

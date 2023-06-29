@@ -10,4 +10,8 @@ import reactor.core.publisher.Mono;
 public interface StudentDBRepository extends R2dbcRepository<DBStudent, Long> {
 
     Flux<DBStudent> findAllByState(String state);
+
+    Mono<Boolean> existsByNameAndLastname(String name, String lastname);
+
+
 }

@@ -6,11 +6,11 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ApiErrorException extends RuntimeException{
-    private String id;
+    private String alumno;
     private String code;
     private String detail;
-    public ApiErrorException(String id, String code, String detail){
-        this.id=id;
+    public ApiErrorException(String alumno, String code, String detail){
+        this.alumno=alumno;
         this.code=code;
         this.detail=detail;
     }
